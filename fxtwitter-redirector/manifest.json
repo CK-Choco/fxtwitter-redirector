@@ -1,0 +1,22 @@
+{
+  "manifest_version": 3,
+  "name": "X → fxtwitter 分享轉換器",
+  "version": "1.0",
+  "description": "將複製的推文連結自動改為 fxtwitter.com。",
+  "icons":{
+	"16":"icon16.png",
+	"48":"icon48.png",
+	"64":"icon64.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://twitter.com/*",
+        "*://x.com/*"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_start"
+    }
+  ],
+  "permissions": ["clipboardWrite"]
+}
