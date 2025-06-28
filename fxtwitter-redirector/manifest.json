@@ -1,22 +1,47 @@
 {
   "manifest_version": 3,
-  "name": "X → fxtwitter 分享轉換器",
-  "version": "1.0",
-  "description": "將複製的推文連結自動改為 fxtwitter.com。",
-  "icons":{
-	"16":"icon16.png",
-	"48":"icon48.png",
-	"64":"icon64.png"
-  },
+  "name": "X(Twitter) 擴展",
+  "version": "2.0",
+  "description": "自動將推文連結轉換為 FxTwitter 或 Fixupx 連結並提供分享選項。",
+  "permissions": [
+    "activeTab",
+    "clipboardRead",
+    "clipboardWrite",
+    "scripting"
+  ],
+  "host_permissions": [
+    "*://x.com/*",
+    "*://twitter.com/*"
+  ],
   "content_scripts": [
     {
-      "matches": [
-        "*://twitter.com/*",
-        "*://x.com/*"
-      ],
-      "js": ["content.js"],
-      "run_at": "document_start"
+      "matches": ["*://x.com/*", "*://twitter.com/*"],
+      "js": ["content.js"]
     }
   ],
-  "permissions": ["clipboardWrite"]
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/FxTwitter/icon16.png",
+	  "48": "icons/FxTwitter/icon48.png",
+      "64": "icons/FxTwitter/icon64.png",
+	  "16": "icons/Fixupx/icon16.png",
+	  "48": "icons/Fixupx/icon48.png",
+	  "64": "icons/Fixupx/icon64.png"
+    }
+  },
+  "icons": {
+    "16": "icons/FxTwitter/icon16.png",
+    "48": "icons/FxTwitter/icon48.png",
+    "64": "icons/FxTwitter/icon64.png",
+	"16": "icons/Fixupx/icon16.png",
+	"48": "icons/Fixupx/icon48.png",
+	"64": "icons/Fixupx/icon64.png"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["icons/FxTwitter/icon16.png","icons/Fixupx/icon16.png"],
+      "matches": ["*://x.com/*", "*://twitter.com/*"] 
+    }
+  ]
 }
